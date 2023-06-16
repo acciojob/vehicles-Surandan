@@ -30,7 +30,7 @@ public class Vehicle {
         this.currentDirection = currentDirection;
     }
 
-    public Vehicle() {}
+//    public Vehicle() {}
 
     public Vehicle(String name) {
 
