@@ -4,7 +4,7 @@ public class F1 extends Car {
 
     public F1(String name, boolean isManual) {
         //Use arbitrary values for parameters which are not mentioned
-        super(name,4,4,6,true,"suv",8);
+        super(name,4,4,6,true,"sport",5);
          this.setName(name);
          this.setManual(isManual);
     }
@@ -24,19 +24,35 @@ public class F1 extends Car {
 
         if(newSpeed == 0) {
             //Stop the car, set gear as 1
-            this.stop();
-            this.setCurrentGear(1);
+            stop();
+            changeGear(1);
         }
         //for all other cases, change the gear accordingly
-        if(newSpeed > 0 && newSpeed <= 50) this.setCurrentGear(1);
-        else if(newSpeed > 50 && newSpeed <= 100) this.setCurrentGear(2);
-        else if(newSpeed > 100 && newSpeed <= 150) this.setCurrentGear(3);
-        else if(newSpeed > 150 && newSpeed <= 200) this.setCurrentGear(4);
-        else if(newSpeed > 200 && newSpeed <= 250) this.setCurrentGear(5);
-        else if(newSpeed > 250) this.setCurrentGear(6);
-
         if(newSpeed > 0) {
-            this.changeSpeed(newSpeed, getCurrentDirection());
+            changeGear(1);
+            changeSpeed(newSpeed, getCurrentDirection());
+        }
+        if(newSpeed >250){
+            changeGear(6);
+            changeSpeed(newSpeed,getCurrentDirection());
+        }else if(newSpeed>200){
+            changeGear(5);
+            changeSpeed(newSpeed,getCurrentDirection());
+        }else if(newSpeed>150){
+            changeGear(4);
+            changeSpeed(newSpeed,getCurrentDirection());
+        }else if(newSpeed>100){
+            changeGear(3);
+            changeSpeed(newSpeed,getCurrentDirection());
+        }
+        else if(newSpeed > 50){
+            changeGear(2);
+            changeSpeed(newSpeed,getCurrentDirection());
+        }
+//
+       else if(newSpeed > 0) {
+            changeGear(1);
+            changeSpeed(newSpeed,getCurrentDirection());
         }
     }
 }
